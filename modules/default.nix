@@ -17,6 +17,8 @@ in {
 
     # Modules with an enable option
     ./asus
+    ./displayManagers
+    ./gnome
     ./nvidia
     ./steam
     ./vscode
@@ -24,6 +26,7 @@ in {
 
   # Hell starts here :*
   options.Ark = {
+    displayManagers.gdm.enable = mkEnableOption "Enable GDM";
     flakeDir = mkOption {
       type = str;
       description = "Path to where the flake folder is located on a system";
@@ -96,7 +99,8 @@ in {
       };
     };
 
-    steam.enable = mkEnableOption "Enables Steam";
-    vscode.enable = mkEnableOption "Enables VSCode";
+    gnome.enable = mkEnableOption "Enable Gnome";
+    steam.enable = mkEnableOption "Enable Steam";
+    vscode.enable = mkEnableOption "Enable VSCode";
   };
 }
