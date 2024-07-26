@@ -58,5 +58,11 @@ in {
         };
       };
     };
+
+    timeZone = mkOption {
+      type = str;
+      default = "Europe/Bucharest";
+      description = "Sets the correct time";
+    };
   };
 }
