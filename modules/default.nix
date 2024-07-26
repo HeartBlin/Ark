@@ -8,12 +8,20 @@ let
 in {
   # NixOS modules & homeManager modules are mixed here
   imports = [
+    # Modules with no options
+    ./bootloader
+
     # Modules with options
     ./nvidia
   ];
 
   # Hell starts here :*
   options.Ark = {
+    flakeDir = mkOption {
+      type = str;
+      description = "Path to where the flake folder is located on a system";
+    };
+
     hardware = {
       cpu = {
 
