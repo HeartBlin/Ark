@@ -10,6 +10,8 @@ in {
   imports = [
     # Modules with no options
     ./bootloader
+    ./kernel
+    ./nix
 
     # Modules with options
     ./nvidia

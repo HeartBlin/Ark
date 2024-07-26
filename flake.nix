@@ -5,6 +5,9 @@
     # Unstable, it works better than stable sometimes
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # CachyOS kernel provider
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     # Home management
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
