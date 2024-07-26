@@ -12,6 +12,7 @@ in {
     };
 
     # Register it as a driver
+    services.xserver.enable = true;
     services.xserver.videoDrivers = [ "nvidia" ];
 
     # Set the kernel up a bit

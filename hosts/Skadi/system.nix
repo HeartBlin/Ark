@@ -3,6 +3,7 @@
 {
   config = {
     Ark = {
+      flakeDir = "/home/heartblin/Documents/Ark";
       hardware = {
         cpu = { };
         gpu = {
@@ -18,9 +19,6 @@
 
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
-
-    nixpkgs.config.allowUnfree = true;
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     users.users.heartblin = { packages = with pkgs; [ vscode git firefox ]; };
   };
