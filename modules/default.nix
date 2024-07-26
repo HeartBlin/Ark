@@ -10,6 +10,7 @@ in {
   imports = [
     # Modules with no options
     ./bootloader
+    ./git
     ./kernel
     ./nix
     ./time
@@ -69,5 +70,24 @@ in {
   };
 
   # User specific config
-  options.Ark.home = { steam.enable = mkEnableOption "Enables Steam"; };
+  options.Ark.home = {
+    git = {
+      user = mkOption {
+        type = str;
+        description = "Username that git uses";
+      };
+
+      email = mkOption {
+        type = str;
+        description = "Email address that git uses";
+      };
+
+      signKey = mkOption {
+        type = str;
+        description = "SSH key used for signing commits";
+      };
+    };
+
+    steam.enable = mkEnableOption "Enables Steam";
+  };
 }

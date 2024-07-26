@@ -17,6 +17,12 @@
       };
 
       home = {
+        git = {
+          user = "HeartBlin";
+          email = "Manea.Emil@proton.me"; # Doxxed lel
+          signKey = "~/.ssh/GithubSign.pub";
+        };
+
         steam.enable = true;
       };
     };
@@ -24,6 +30,6 @@
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
 
-    users.users.heartblin = { packages = with pkgs; [ vscode git firefox ]; };
+    users.users.heartblin = { packages = with pkgs; [ vscode ]; };
   };
 }
