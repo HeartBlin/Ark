@@ -1,7 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  inherit (lib) mkForce mkIf;
+  inherit (lib) mkForce;
   hostName = config.Ark.hostName;
 in {
   imports = [ inputs.chaotic.nixosModules.default ];

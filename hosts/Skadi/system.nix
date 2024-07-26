@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   config = {
@@ -24,12 +24,11 @@
         };
 
         steam.enable = true;
+        vscode.enable = true;
       };
     };
 
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
-
-    users.users.heartblin = { packages = with pkgs; [ vscode ]; };
   };
 }

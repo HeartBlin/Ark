@@ -1,4 +1,4 @@
-{ config, host, inputs, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ./docs.nix ./nh.nix ./substituters.nix ];

@@ -14,6 +14,7 @@ in {
     ./kernel
     ./nix
     ./time
+    ./vscode
 
     # Modules with options
     ./nvidia
@@ -89,5 +90,6 @@ in {
     };
 
     steam.enable = mkEnableOption "Enables Steam";
+    vscode.enable = mkEnableOption "Enables VSCode";
   };
 }
