@@ -16,6 +16,9 @@
         };
       };
 
+      timeZone = "Europe/Bucharest";
+      manufacturer = "asus";
+
       home = {
         git = {
           user = "HeartBlin";

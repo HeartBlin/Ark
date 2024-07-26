@@ -8,17 +8,18 @@ let
 in {
   # NixOS modules & homeManager modules are mixed here
   imports = [
-    # Modules with no options
+    # Modules with no enable option
     ./bootloader
     ./git
     ./kernel
     ./nix
     ./time
-    ./vscode
 
-    # Modules with options
+    # Modules with an enable option
+    ./asus
     ./nvidia
     ./steam
+    ./vscode
   ];
 
   # Hell starts here :*
@@ -61,6 +62,12 @@ in {
           description = "The GPU currently installed";
         };
       };
+    };
+
+    manufacturer = mkOption {
+      type = str;
+      default = "";
+      description = "Manufacturer of PC";
     };
 
     timeZone = mkOption {
