@@ -12,6 +12,7 @@ in {
     ./bootloader
     ./kernel
     ./nix
+    ./time
 
     # Modules with options
     ./nvidia
