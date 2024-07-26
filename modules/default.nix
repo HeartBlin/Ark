@@ -16,6 +16,7 @@ in {
 
     # Modules with options
     ./nvidia
+    ./steam
   ];
 
   # Hell starts here :*
@@ -66,4 +67,7 @@ in {
       description = "Sets the correct time";
     };
   };
+
+  # User specific config
+  options.Ark.home = { steam.enable = mkEnableOption "Enables Steam"; };
 }

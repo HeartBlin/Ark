@@ -15,6 +15,10 @@
           };
         };
       };
+
+      home = {
+        steam.enable = true;
+      };
     };
 
     services.xserver.displayManager.gdm.enable = true;

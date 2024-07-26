@@ -46,7 +46,7 @@
           };
         };
 
-        options.Ark.user = lib.mkOption {
+        options.Ark.userName = lib.mkOption {
           type = with lib.types; str;
           default = "${userName}";
         };
