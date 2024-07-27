@@ -11,15 +11,20 @@
     # Home management
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Wayland compositor & Related
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hypr-dynamic-cursors.url = "github:VirtCode/hypr-dynamic-cursors";
+    hypr-dynamic-cursors.inputs.hyprland.follows = "hyprland";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      inherit (nixpkgs.lib) nixosSystem;
-      inherit (nixpkgs.legacyPackages.${system}) nixfmt-classic;
+      inherit (nixpkgs.lib) genAttrs nixosSystem;
 
       # I don't have any other systems
-      system = "x86_64-linux";
+      supportedSystems = [ "x86_64-linux" ];
+      forAllSystems = genAttrs supportedSystems;
 
       specialArgs = { inherit inputs self; };
 
@@ -35,7 +40,11 @@
         };
       };
 
+      packages = forAllSystems
+        (system: import ./packages nixpkgs.legacyPackages.${system});
+
       # Other ones look bad
-      formatter.${system} = nixfmt-classic;
+      formatter =
+        forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-classic);
     };
 }

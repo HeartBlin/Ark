@@ -1,8 +1,8 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 let
   inherit (lib) mkEnableOption mkOption;
-  inherit (lib.types) enum str;
+  inherit (lib.types) enum int package str;
 
   gpus = [ "nvidia" "amd" "intel" "none" ];
 in {
@@ -20,6 +20,7 @@ in {
     ./chromium
     ./displayManagers
     ./gnome
+    ./hyprland
     ./nvidia
     ./steam
     ./terminal
@@ -101,6 +102,47 @@ in {
     };
 
     gnome.enable = mkEnableOption "Enable Gnome";
+    hyprland = {
+      enable = mkEnableOption "Enable Hyprland";
+
+      cursor = {
+        name = mkOption {
+          type = str;
+          default = "Bibata-Modern-Ice";
+        };
+
+        package = mkOption {
+          type = package;
+          default = pkgs.bibata-cursors;
+        };
+
+        size = mkOption {
+          type = int;
+          default = 25;
+        };
+      };
+
+      wallpaper = mkOption {
+        type = str;
+        default = "";
+        description = "Takes either a path or a .outPath";
+      };
+
+      wallpapers = {
+        isTwo = mkEnableOption
+          "Whether or not to use 2 different wallpapers for 2 displays";
+        firstWallpaper = mkOption {
+          type = str;
+          default = "";
+        };
+
+        secondWallpaper = mkOption {
+          type = str;
+          default = "";
+        };
+      };
+    };
+
     steam.enable = mkEnableOption "Enable Steam";
     terminal = {
       emulator = mkOption {

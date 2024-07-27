@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, self, ... }:
 
 {
   config.Ark = {
@@ -28,6 +28,23 @@
       };
 
       gnome.enable = true;
+      hyprland = {
+        enable = true;
+        cursor = {
+          name = "Bibata-Modern-Classic";
+          # package is left at default
+          size = 25;
+        };
+
+        wallpapers = {
+          isTwo = true;
+          firstWallpaper =
+            "${self.packages.${pkgs.system}.Walls}/share/wallpapers/Sony_1.jpg";
+          secondWallpaper =
+            "${self.packages.${pkgs.system}.Walls}/share/wallpapers/Sony_2.jpg";
+        };
+      };
+
       steam.enable = true;
       terminal = {
         emulator = "foot";
