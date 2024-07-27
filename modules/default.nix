@@ -35,9 +35,7 @@ in {
     };
 
     hardware = {
-      cpu = {
-
-      };
+      cpu = { };
 
       gpu = {
         hybrid = mkEnableOption "Whether or not the system has hybrid graphics";

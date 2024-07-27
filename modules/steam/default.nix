@@ -2,6 +2,7 @@
 
 let
   inherit (lib) mkIf;
+
   cfg = config.Ark.home.steam;
   user = config.Ark.userName;
 in {

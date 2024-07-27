@@ -35,6 +35,7 @@
         };
       };
 
+      # Other ones look bad
       formatter.${system} = nixfmt-classic;
     };
 }

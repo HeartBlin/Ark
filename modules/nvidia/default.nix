@@ -2,6 +2,7 @@
 
 let
   inherit (lib) mkDefault mkIf;
+
   cfg = config.Ark.hardware.gpu;
 in {
   config = mkIf (cfg.type == "nvidia") {

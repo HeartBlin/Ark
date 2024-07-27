@@ -2,6 +2,7 @@
 
 let
   inherit (lib) mkForce;
+
   hostName = config.Ark.hostName;
 in {
   imports = [ inputs.chaotic.nixosModules.default ];

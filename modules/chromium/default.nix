@@ -4,7 +4,7 @@ let
   inherit (lib) mkIf;
 
   createChromiumExtensionFor = x:
-    { id, sha256, version }: {
+    { id, sha256, version, }: {
       inherit id;
       crxPath = builtins.fetchurl {
         url =
