@@ -29,7 +29,8 @@ in {
           "swww img ${wallpaper} -t wipe --transition-angle 30 --transition-step 255 --transition-fps 144 --transition-duration 1.2"
         ];
       } else {
-        exec-once = [ "swww-daemon --no-cache" "${refresh.outPath}/bin/refresh"];
+        exec-once =
+          [ "swww-daemon --no-cache" "${refresh.outPath}/bin/refresh" ];
         exec = [
           "swww img ${firstWallpaper} -o eDP-1 -t wipe --transition-angle 30 --transition-step 255 --transition-fps 144 --transition-duration 1.2"
           "swww img ${secondWallpaper} -o HDMI-A-1 -t wipe --transition-angle 120 --transition-step 255 --transition-fps 144 --transition-duration 1.2"
