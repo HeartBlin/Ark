@@ -20,6 +20,7 @@
     manufacturer = "asus";
 
     home = {
+      chromium.enable = true;
       git = {
         user = "HeartBlin";
         email = "Manea.Emil@proton.me"; # Doxxed lel

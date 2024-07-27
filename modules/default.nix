@@ -17,6 +17,7 @@ in {
 
     # Modules with an enable option
     ./asus
+    ./chromium
     ./displayManagers
     ./gnome
     ./nvidia
@@ -82,6 +83,7 @@ in {
 
   # User specific config
   options.Ark.home = {
+    chromium.enable = mkEnableOption "Enable ungoogled-chromium";
     git = {
       user = mkOption {
         type = str;
