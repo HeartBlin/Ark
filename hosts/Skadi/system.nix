@@ -29,6 +29,11 @@
 
       gnome.enable = true;
       steam.enable = true;
+      terminal = {
+        emulator = "foot";
+        shell = "fish";
+        starship.enable = true;
+      };
       vscode.enable = true;
     };
   };

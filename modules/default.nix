@@ -22,6 +22,7 @@ in {
     ./gnome
     ./nvidia
     ./steam
+    ./terminal
     ./vscode
   ];
 
@@ -103,6 +104,20 @@ in {
 
     gnome.enable = mkEnableOption "Enable Gnome";
     steam.enable = mkEnableOption "Enable Steam";
+    terminal = {
+      emulator = mkOption {
+        type = str;
+        default = "foot";
+      };
+
+      shell = mkOption {
+        type = str;
+        default = "fish";
+      };
+
+      starship.enable = mkEnableOption "Enable StarShip";
+    };
+
     vscode.enable = mkEnableOption "Enable VSCode";
   };
 }
