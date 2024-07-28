@@ -41,9 +41,9 @@
         wallpapers = {
           isTwo = true;
           firstWallpaper =
-            "${self.packages.${pkgs.system}.Walls}/share/wallpapers/Sony_1.jpg";
+            "${self.packages.${pkgs.system}.Walls}/share/wallpapers/CVS_T-120-part1.png";
           secondWallpaper =
-            "${self.packages.${pkgs.system}.Walls}/share/wallpapers/Sony_2.jpg";
+            "${self.packages.${pkgs.system}.Walls}/share/wallpapers/CVS_T-120-part2.png";
         };
       };
 

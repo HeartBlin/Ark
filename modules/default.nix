@@ -1,34 +1,36 @@
 { lib, pkgs, ... }:
 
+# Credits for this function go to evanjs
+# https://github.com/evanjs/nixos_cfg/blob/4bb5b0b84a221b25cf50853c12b9f66f0cad3ea4/config/new-modules/default.nix
+# The MIT license applies to these functions
+# getDirectory, files and allDefaultFiles
+# https://github.com/evanjs/nixos_cfg/blob/4bb5b0b84a221b25cf50853c12b9f66f0cad3ea4/LICENSE
+
 let
-  inherit (lib) mkEnableOption mkOption;
+  inherit (lib)
+    collect concatStringsSep filter hasSuffix isString mapAttrs
+    mapAttrsRecursive mkEnableOption mkOption;
   inherit (lib.types) enum int package str;
 
   cpus = [ "amd" "intel" ];
   gpus = [ "nvidia" "amd" "intel" "none" ];
+
+  getDirectory = dir:
+    mapAttrs (file: type:
+      if type == "directory" then getDirectory "${dir}/${file}" else type)
+    (builtins.readDir dir);
+
+  files = dir:
+    collect isString (mapAttrsRecursive (path: type: concatStringsSep "/" path)
+      (getDirectory dir));
+
+  allDefaultFiles = dir:
+    map (file: ./. + "/${file}") (filter
+      (file: hasSuffix "main.nix" file
+      ) (files dir));
 in {
   # NixOS modules & homeManager modules are mixed here
-  imports = [
-    # Modules with no enable option
-    ./bootloader
-    ./git
-    ./kernel
-    ./nix
-    ./time
-
-    # Modules with an enable option
-    ./audio
-    ./amd
-    ./asus
-    ./chromium
-    ./displayManagers
-    ./gnome
-    ./hyprland
-    ./nvidia
-    ./steam
-    ./terminal
-    ./vscode
-  ];
+  imports = allDefaultFiles ./.;
 
   # Hell starts here :*
   options.Ark = {
