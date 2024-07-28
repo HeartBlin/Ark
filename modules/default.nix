@@ -4,6 +4,7 @@ let
   inherit (lib) mkEnableOption mkOption;
   inherit (lib.types) enum int package str;
 
+  cpus = [ "amd" "intel" ];
   gpus = [ "nvidia" "amd" "intel" "none" ];
 in {
   # NixOS modules & homeManager modules are mixed here
@@ -16,6 +17,7 @@ in {
     ./time
 
     # Modules with an enable option
+    ./amd
     ./asus
     ./chromium
     ./displayManagers
@@ -36,7 +38,10 @@ in {
     };
 
     hardware = {
-      cpu = { };
+      cpu.type = mkOption {
+        type = enum cpus;
+        description = "The CPU currently installed";
+      };
 
       gpu = {
         hybrid = mkEnableOption "Whether or not the system has hybrid graphics";

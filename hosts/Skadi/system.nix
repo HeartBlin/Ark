@@ -5,7 +5,7 @@
     displayManagers.gdm.enable = true;
     flakeDir = "/home/heartblin/Documents/Ark";
     hardware = {
-      cpu = { };
+      cpu.type = "amd";
       gpu = {
         hybrid = true;
         type = "nvidia";
