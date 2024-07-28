@@ -17,6 +17,7 @@ in {
     ./time
 
     # Modules with an enable option
+    ./audio
     ./amd
     ./asus
     ./chromium
@@ -31,6 +32,7 @@ in {
 
   # Hell starts here :*
   options.Ark = {
+    audio.enable = mkEnableOption "Enable audio (pipewire)";
     displayManagers.gdm.enable = mkEnableOption "Enable GDM";
     flakeDir = mkOption {
       type = str;

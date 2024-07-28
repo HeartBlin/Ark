@@ -2,6 +2,7 @@
 
 {
   config.Ark = {
+    audio.enable = true;
     displayManagers.gdm.enable = true;
     flakeDir = "/home/heartblin/Documents/Ark";
     hardware = {
