@@ -19,7 +19,8 @@ in {
     # Set the kernel up a bit
     boot.blacklistedKernelModules = [ "noveau" ];
     boot.kernelParams = [
-      "NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+      "nvidia.NVreg_EnableGpuFirmware=0"
       "nvidia_drm.modeset=1"
       "nvidia_drm.fbdev=1"
     ];
