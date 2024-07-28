@@ -16,6 +16,7 @@
       };
     };
 
+    secureBoot.enable = true;
     timeZone = "Europe/Bucharest";
     manufacturer = "asus";
 

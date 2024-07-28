@@ -74,6 +74,7 @@ in {
       description = "Manufacturer of PC";
     };
 
+    secureBoot.enable = mkEnableOption "Enable SecureBoot";
     timeZone = mkOption {
       type = str;
       default = "Europe/Bucharest";
