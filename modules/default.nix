@@ -12,8 +12,9 @@ let
     mapAttrsRecursive mkEnableOption mkOption;
   inherit (lib.types) enum int package str;
 
-  cpus = [ "amd" "intel" ];
+  cpus = [ "amd" "intel" "none" ];
   gpus = [ "nvidia" "amd" "intel" "none" ];
+  roles = [ "iso" "laptop" "server" ];
 
   getDirectory = dir:
     mapAttrs (file: type:
@@ -25,9 +26,8 @@ let
       (getDirectory dir));
 
   allDefaultFiles = dir:
-    map (file: ./. + "/${file}") (filter
-      (file: hasSuffix "main.nix" file
-      ) (files dir));
+    map (file: ./. + "/${file}")
+    (filter (file: hasSuffix "main.nix" file) (files dir));
 in {
   # NixOS modules & homeManager modules are mixed here
   imports = allDefaultFiles ./.;
@@ -83,6 +83,10 @@ in {
       description = "Manufacturer of PC";
     };
 
+    role = mkOption {
+      type = enum roles;
+      description = "This enables/disables some modules";
+    };
     secureBoot.enable = mkEnableOption "Enable SecureBoot";
     timeZone = mkOption {
       type = str;

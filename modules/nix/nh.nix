@@ -1,11 +1,17 @@
-{ config, ... }:
+{ config, lib, ... }:
 
-let flakeDir = config.Ark.flakeDir;
+let
+  inherit (lib) mkIf;
+
+  role = config.Ark.role;
+  flakeDir = config.Ark.flakeDir;
 in {
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 7d --keep 3";
-    flake = flakeDir;
+  config = mkIf (role != "iso") {
+    programs.nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 7d --keep 3";
+      flake = flakeDir;
+    };
   };
 }

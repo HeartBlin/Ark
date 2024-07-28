@@ -31,6 +31,7 @@
       specialArgs = { inherit inputs self; };
 
       hostImport = (import ./lib { inherit inputs self; }).hostImport;
+      isoImport = (import ./lib { inherit inputs self; }).isoImport;
     in {
       nixosConfigurations = {
         Skadi = nixosSystem {
@@ -39,6 +40,11 @@
             hostName = "Skadi"; # Duh
             userName = "heartblin";
           };
+        };
+
+        Specter = nixosSystem {
+          specialArgs = specialArgs;
+          modules = isoImport { hostName = "Specter"; };
         };
       };
 

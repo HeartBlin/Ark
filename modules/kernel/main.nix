@@ -8,8 +8,7 @@ in {
   imports = [ inputs.chaotic.nixosModules.default ];
 
   boot.kernelPackages = {
-    # Surprise tool that will help us later
-    # "Specter" = pkgs.linuxPackages_latest;
+    "Specter" = config.boot.zfs.package.latestCompatibleLinuxPackages;
     "Skadi" = pkgs.linuxPackages_cachyos;
   }."${hostName}";
 

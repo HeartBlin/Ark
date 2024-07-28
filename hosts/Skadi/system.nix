@@ -17,6 +17,7 @@
       };
     };
 
+    role = "laptop";
     secureBoot.enable = true;
     timeZone = "Europe/Bucharest";
     manufacturer = "asus";
@@ -40,10 +41,12 @@
 
         wallpapers = {
           isTwo = true;
-          firstWallpaper =
-            "${self.packages.${pkgs.system}.Walls}/share/wallpapers/CVS_T-120-part1.png";
-          secondWallpaper =
-            "${self.packages.${pkgs.system}.Walls}/share/wallpapers/CVS_T-120-part2.png";
+          firstWallpaper = "${
+              self.packages.${pkgs.system}.Walls
+            }/share/wallpapers/CVS_T-120-part1.png";
+          secondWallpaper = "${
+              self.packages.${pkgs.system}.Walls
+            }/share/wallpapers/CVS_T-120-part2.png";
         };
       };
 
