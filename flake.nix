@@ -14,8 +14,6 @@
 
     # Wayland compositor & Related
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    hypr-dynamic-cursors.url = "github:VirtCode/hypr-dynamic-cursors";
-    hypr-dynamic-cursors.inputs.hyprland.follows = "hyprland";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
