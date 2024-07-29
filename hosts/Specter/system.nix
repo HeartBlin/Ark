@@ -1,4 +1,4 @@
-{ pkgs, self, ... }:
+{ inputs, ... }:
 
 {
   config.Ark = {
@@ -37,9 +37,8 @@
 
         wallpapers = { isTwo = false; };
 
-        wallpaper = "${
-            self.packages.${pkgs.system}.Walls
-          }/share/wallpapers/nineish-dark-gray.png";
+        wallpaper =
+          "${inputs.nixos-artwork}/wallpapers/nix-wallpaper-nineish-dark-gray.png";
       };
 
       steam.enable = false;

@@ -459,6 +459,22 @@
         "type": "github"
       }
     },
+    "nixos-artwork": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719676066,
+        "narHash": "sha256-78FyNyGtDZogJUWcCT6A/T2MK87nGN/muC7ANH1b1V8=",
+        "owner": "NixOS",
+        "repo": "nixos-artwork",
+        "rev": "de03e887f03037e7e781a678b57fdae603c9ca20",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixos-artwork",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1722062969,
@@ -556,6 +572,7 @@
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "lanzaboote": "lanzaboote",
+        "nixos-artwork": "nixos-artwork",
         "nixpkgs": "nixpkgs_3"
       }
     },
