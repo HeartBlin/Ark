@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, self, ... }:
 let
   inherit (lib) mkIf;
 
@@ -12,6 +12,7 @@ in {
   imports = [ inputs.hyprland.nixosModules.default ];
 
   config = mkIf cfg.enable {
+    environment.systemPackages = [ self.packages.${pkgs.system}.hyprZoom ];
     programs.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -91,6 +92,10 @@ in {
             # Play/Pause
             ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play"
             ", XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl pause"
+
+            # Zoom
+            "Super, mouse_down, exec, ${self.packages.${pkgs.system}.hyprZoom}/bin/hypr-zoom -duration=20 -steps=15"
+            "Super, mouse_up, exec, ${self.packages.${pkgs.system}.hyprZoom}/bin/hypr-zoom -duration=20 -steps=15"
 
             # Workspaces
             "Super, 1, workspace, 1"
