@@ -1,9 +1,18 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (lib) mkDefault mkIf;
+  inherit (lib) fakeSha256 mkDefault mkIf;
 
   cfg = config.Ark.hardware.gpu;
+
+  bleedingEdge = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    version = "560.28.03";
+    sha256_64bit = "sha256-martv18vngYBJw1IFUCAaYr+uc65KtlHAMdLMdtQJ+Y=";
+    sha256_aarch64 = fakeSha256;
+    openSha256 = "sha256-asGpqOpU0tIO9QqceA8XRn5L27OiBFuI9RZ1NjSVwaM=";
+    settingsSha256 = fakeSha256;
+    persistencedSha256 = "sha256-MhITuC8tH/IPhCOUm60SrPOldOpitk78mH0rg+egkTE=";
+  };
 in {
   config = mkIf (cfg.type == "nvidia") {
     nixpkgs.config = {
@@ -40,13 +49,14 @@ in {
 
     hardware.nvidia = {
       # Always use latest
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = bleedingEdge;
 
       dynamicBoost.enable = mkDefault true;
       modesetting.enable = mkDefault true;
 
       prime = {
         reverseSync.enable = cfg.hybrid;
+        reverseSync.setupCommands.enable = true;
 
         amdgpuBusId = "${cfg.ids.amd}";
         intelBusId = "${cfg.ids.intel}";
@@ -60,9 +70,8 @@ in {
       };
 
       nvidiaSettings = false;
-      open = mkDefault false; # open if >= 560
-      nvidiaPersistenced = false;
-      forceFullCompositionPipeline = true;
+      open = true;
+      nvidiaPersistenced = true;
     };
 
     # Feed it vaapi
