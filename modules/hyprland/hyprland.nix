@@ -8,6 +8,7 @@ let
   terminal = config.Ark.home.terminal.emulator;
   chromium = config.Ark.home.chromium.enable;
   manufacturer = config.Ark.manufacturer;
+  nvidia = (config.Ark.hardware.gpu.type == "nvidia");
 in {
   imports = [ inputs.hyprland.nixosModules.default ];
 
@@ -39,6 +40,17 @@ in {
             "eDP-1, 1920x1080@144, 0x0, 1"
             "HDMI-A-1, 1920x1080@60, 1920x0, 1"
           ];
+
+          env = [
+            (mkIf nvidia "LIVBA_DRIVER_NAME,nvidia")
+            (mkIf nvidia "XDG_SESSION_TYPE,wayland")
+            (mkIf nvidia "__GLX_VENDOR_LIBRARY_NAME,nvidia")
+          ];
+
+          cursor = mkIf nvidia {
+            no_hardware_cursors = true;
+            allow_dumb_copy = true;
+          };
 
           exec-once = [
             # Clipboard
@@ -94,8 +106,12 @@ in {
             ", XF86AudioStop, exec, ${pkgs.playerctl}/bin/playerctl pause"
 
             # Zoom
-            "Super, mouse_down, exec, ${self.packages.${pkgs.system}.hyprZoom}/bin/hypr-zoom -duration=20 -steps=15"
-            "Super, mouse_up, exec, ${self.packages.${pkgs.system}.hyprZoom}/bin/hypr-zoom -duration=20 -steps=15"
+            "Super, mouse_down, exec, ${
+              self.packages.${pkgs.system}.hyprZoom
+            }/bin/hypr-zoom -duration=20 -steps=15"
+            "Super, mouse_up, exec, ${
+              self.packages.${pkgs.system}.hyprZoom
+            }/bin/hypr-zoom -duration=20 -steps=15"
 
             # Workspaces
             "Super, 1, workspace, 1"
