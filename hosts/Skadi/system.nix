@@ -3,7 +3,10 @@
 {
   config.Ark = {
     audio.enable = true;
-    displayManagers.gdm.enable = true;
+    displayManagers = {
+      gdm.enable = false;
+      sddm.enable = true;
+    };
     flakeDir = "/home/heartblin/Documents/Ark";
     hardware = {
       cpu.type = "amd";

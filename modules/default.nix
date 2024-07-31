@@ -35,7 +35,11 @@ in {
   # Hell starts here :*
   options.Ark = {
     audio.enable = mkEnableOption "Enable audio (pipewire)";
-    displayManagers.gdm.enable = mkEnableOption "Enable GDM";
+    displayManagers = {
+      gdm.enable = mkEnableOption "Enable GDM";
+      sddm.enable = mkEnableOption "Enable SDDM";
+    };
+
     flakeDir = mkOption {
       type = str;
       description = "Path to where the flake folder is located on a system";
