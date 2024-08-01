@@ -2,7 +2,7 @@
 
 let inherit (lib) mkForce;
 in {
-  imports = [ ./secureBoot.nix ];
+  imports = [ ./plymouth.nix ./secureBoot.nix ];
 
   boot.loader.timeout = mkForce 0;
   boot.loader.efi.canTouchEfiVariables = true;

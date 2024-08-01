@@ -4,8 +4,8 @@
   config.Ark = {
     audio.enable = true;
     displayManagers = {
-      gdm.enable = false;
-      sddm.enable = true;
+      gdm.enable = true;
+      sddm.enable = false;
     };
     flakeDir = "/home/heartblin/Documents/Ark";
     hardware = {
