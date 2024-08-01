@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, self, ... }:
 
 {
   config.Ark = {
@@ -43,12 +43,13 @@
         };
 
         wallpapers = let
-          nixos =
-            "${inputs.nixos-artwork}/wallpapers/nix-wallpaper-nineish-dark-gray.png";
+          wallpaper = "${
+              self.packages.${pkgs.system}.Walls
+            }/share/wallpapers/tokyo-night.png";
         in {
           isTwo = true;
-          firstWallpaper = nixos;
-          secondWallpaper = nixos;
+          firstWallpaper = wallpaper;
+          secondWallpaper = wallpaper;
         };
       };
 

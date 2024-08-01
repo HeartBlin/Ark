@@ -108,10 +108,10 @@ in {
             # Zoom
             "Super, mouse_down, exec, ${
               self.packages.${pkgs.system}.hyprZoom
-            }/bin/hypr-zoom -duration=20 -steps=15"
+            }/bin/hypr-zoom -duration=10 -steps=15"
             "Super, mouse_up, exec, ${
               self.packages.${pkgs.system}.hyprZoom
-            }/bin/hypr-zoom -duration=20 -steps=15"
+            }/bin/hypr-zoom -duration=10 -steps=15"
 
             # Workspaces
             "Super, 1, workspace, 1"

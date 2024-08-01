@@ -1,1 +1,4 @@
-_: { imports = [ ./cursors.nix ./hyprland.nix ./wallpaper.nix ]; }
+_: {
+  imports =
+    [ ./cursors.nix ./hyprland.nix ./idle.nix ./lock.nix ./wallpaper.nix ];
+}
