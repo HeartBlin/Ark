@@ -5,6 +5,9 @@
     # Unstable, it works better than stable sometimes
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # Supported systems
+    systems.url = "github:nix-systems/default-linux";
+
     # CachyOS kernel provider
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
@@ -15,7 +18,9 @@
     # Wayland compositor & Related
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hypridle.url = "github:hyprwm/hypridle";
+    hypridle.inputs.nixpkgs.follows = "nixpkgs";
     hyprlock.url = "github:hyprwm/hyprlock";
+    hyprlock.inputs.nixpkgs.follows = "nixpkgs";
 
     # SecureBoot support
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
@@ -26,13 +31,12 @@
     nixos-artwork.flake = false;
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, systems, nixpkgs, ... }@inputs:
     let
       inherit (nixpkgs.lib) genAttrs nixosSystem;
 
       # I don't have any other systems
-      supportedSystems = [ "x86_64-linux" ];
-      forAllSystems = genAttrs supportedSystems;
+      eachSystem = genAttrs (import systems);
 
       specialArgs = { inherit inputs self; };
 
@@ -54,11 +58,11 @@
         };
       };
 
-      packages = forAllSystems
+      packages = eachSystem
         (system: import ./packages nixpkgs.legacyPackages.${system});
 
       # Other ones look bad
       formatter =
-        forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-classic);
+        eachSystem (system: nixpkgs.legacyPackages.${system}.nixfmt-classic);
     };
 }

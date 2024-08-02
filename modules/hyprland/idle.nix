@@ -25,31 +25,31 @@ in {
 
         listener = [
           {
-            timeout = 60;
+            timeout = 180;
             on-timeout = "brightnessctl -s set 10";
             on-resume = "brightnessctl -r";
           }
           {
-            timeout = 60;
+            timeout = 180;
             on-timeout = "brightnessctl -sd *::kbd_backlight set 0";
             on-resume = "brightnessctl -rd *::kbd_backlight";
           }
           {
-            timeout = 120;
+            timeout = 210;
             on-timeout = "pidof hyprlock || hyprlock";
           }
           {
-            timeout = 180;
+            timeout = 240;
             on-timeout = "hyprctl keyword monitor HDMI-A-1,disable";
             on-resume = "hyprctl reload";
           }
           {
-            timeout = 180;
+            timeout = 240;
             on-timeout = "hyprctl dispatch dpms off";
             on-resume = "hyprctl dispatch dpms on";
           }
           {
-            timeout = 240;
+            timeout = 300;
             on-timeout = "systemctl suspend";
           }
         ];
