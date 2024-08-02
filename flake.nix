@@ -58,8 +58,8 @@
         };
       };
 
-      packages = eachSystem
-        (system: import ./packages nixpkgs.legacyPackages.${system});
+      packages =
+        eachSystem (system: import ./packages nixpkgs.legacyPackages.${system});
 
       # Other ones look bad
       formatter =
