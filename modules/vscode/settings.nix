@@ -33,8 +33,8 @@
 
     # Nix
     "nix.enableLanguageServer" = true;
-    "nix.serverPath" = "nil";
-    "nix.serverSettings"."nil"."formatting"."command" = [ "nixfmt" ];
+    "nix.serverPath" = "nixd";
+    "nix.serverSettings"."nixd"."formatting"."command" = [ "nixfmt" ];
 
     # Telemetry
     "redhat.telemetry.enabled" = false;
@@ -51,10 +51,10 @@
 
     # Workbench
     "workbench.iconTheme" = "material-icon-theme";
-    "workbench.preferredDarkColorTheme" = "Default Dark+";
-    "workbench.preferredLightColorTheme" = "Default Dark+";
+    "workbench.preferredDarkColorTheme" = "Everblush";
+    "workbench.preferredLightColorTheme" = "Everblush";
     "workbench.sideBar.location" = "left";
   };
 
-  home.packages = [ pkgs.nil pkgs.nixfmt-classic ];
+  home.packages = [ pkgs.nixd pkgs.nixfmt-classic ];
 }
