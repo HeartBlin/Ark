@@ -9,7 +9,7 @@ in {
 
   boot.kernelPackages = {
     "Specter" = config.boot.zfs.package.latestCompatibleLinuxPackages;
-    "Skadi" = pkgs.linuxPackages_cachyos;
+    "Skadi" = pkgs.linuxPackages_cachyos-lto;
   }."${hostName}";
 
   boot.initrd.systemd.enable = mkForce true;
