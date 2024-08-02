@@ -33,7 +33,7 @@
         signKey = "~/.ssh/GithubSign.pub";
       };
 
-      gnome.enable = true;
+      gnome.enable = false;
       hyprland = {
         enable = true;
         cursor = {
