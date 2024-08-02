@@ -16,6 +16,10 @@ in {
         set -gx FLAKE ${flakeDir}
       '';
 
+      functions = {
+        ".".body = ''nix shell nixpkgs#$argv[1] --command "fish"'';
+      };
+
       shellAliases = {
         ls = "${pkgs.eza}/bin/eza -l";
         rebuild = "nh os switch";

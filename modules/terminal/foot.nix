@@ -25,26 +25,26 @@ in {
         colors = {
           alpha = 1;
 
-          background = "1d1f21";
-          foreground = "c5c8c6";
+          background = "141b1e";
+          foreground = "dadada";
 
-          regular0 = "1d1f21";
-          regular1 = "d54e53";
-          regular2 = "b9ca4a";
-          regular3 = "e7c547";
-          regular4 = "7aa6da";
-          regular5 = "c397d8";
-          regular6 = "70c0b1";
-          regular7 = "eaeaea";
+          regular0 = "232a2d";
+          regular1 = "e57474";
+          regular2 = "8ccf7e";
+          regular3 = "e5c76b";
+          regular4 = "67b0e8";
+          regular5 = "c47fd5";
+          regular6 = "6cbfbf";
+          regular7 = "b3b9b8";
 
-          bright0 = "666666";
-          bright1 = "cc6666";
-          bright2 = "b5bd68";
-          bright3 = "f0c674";
-          bright4 = "81a2be";
-          bright5 = "b294bb";
-          bright6 = "8abeb7";
-          bright7 = "c5c8c6";
+          bright0 = "2d3437";
+          bright1 = "ef7e7e";
+          bright2 = "96d988";
+          bright3 = "f4d67a";
+          bright4 = "71baf2";
+          bright5 = "ce89df";
+          bright6 = "67cbe7";
+          bright7 = "bdc3c2";
         };
 
         cursor = {
