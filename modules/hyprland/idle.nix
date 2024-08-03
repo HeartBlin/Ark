@@ -3,6 +3,8 @@
 let
   inherit (lib) mkIf;
 
+  rB = pkgs.writeShellScript "brightness" (builtins.readFile ./brightness);
+
   cfg = config.Ark.home.hyprland;
   user = config.Ark.userName;
 in {
@@ -26,17 +28,12 @@ in {
         listener = [
           {
             timeout = 180;
-            on-timeout = "brightnessctl -s set 10";
-            on-resume = "brightnessctl -r";
-          }
-          {
-            timeout = 180;
-            on-timeout = "brightnessctl -sd *::kbd_backlight set 0";
-            on-resume = "brightnessctl -rd *::kbd_backlight";
+            on-timeout = "${rB.outPath} set 10 0";
+            on-resume = "${rB.outPath} restore";
           }
           {
             timeout = 210;
-            on-timeout = "pidof hyprlock || hyprlock";
+            on-timeout = "loginctl lock-session";
           }
           {
             timeout = 240;

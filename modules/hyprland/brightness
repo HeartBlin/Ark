@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#
+# Workaround for brightnessctl not restoring brightness values.
+
+sflag=''
+rflag=''
+brightness=0
+kbBrightness=0
+
+function setValue() {
+  local brightness=$1
+  local kbBrightness=$2
+
+  local previous=$(brightnessctl get)
+  local previousKb=$(brightnessctl -d *::kbd_backlight get)
+
+  brightnessctl set "$brightness"
+  brightnessctl -d *::kbd_backlight set "$kbBrightness"
+
+  echo "$previous" > /tmp/brightness
+  echo "$previousKb" > /tmp/kbBrightness
+}
+
+restoreValue() {
+  if [[ -f /tmp/brightness && -f /tmp/kbBrightness ]]; then
+    local brightness=$(cat /tmp/brightness)
+    local kbBrightness=$(cat /tmp/kbBrightness)
+
+    brightnessctl set "$brightness"
+    echo "$kbBrightness"
+    brightnessctl -d *::kbd_backlight set "$kbBrightness"
+  else
+    exit 1
+  fi
+}
+
+case "$1" in
+  set)      sflag='true' ;;
+  restore)  rflag='true' ;;
+  *)        exit 1 ;;
+esac
+
+main() {
+  if [[ "$sflag" == "true" ]]; then
+    setValue "$brightness" "$kbBrightness"
+  fi
+
+  if [[ "$rflag" == "true" ]]; then
+    restoreValue
+  fi
+}
+
+main
