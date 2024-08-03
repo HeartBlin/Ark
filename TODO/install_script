@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# TODO ask the user for partition mb?
+
+# Boot partiton
+sudo parted --script /dev/nvme0n1 -- \
+  mklabel gpt \
+  mkpart esp fat32 1MiB 1GiB \
+  set 1 boot on
+sudo mkfs.vfat -n BOOT /dev/nvme0n1p1
+
+# Main BTRFS partition
+sudo parted /dev/nvme0n1 -- mkpart primary 1GiB 100%
+sudo cryptsetup --verify-passphrase -v luksFormat /dev/nvme0n1p2
+sudo cryptsetup open /dev/nvme0n1p2 encrypted
+sudo mkfs.btrfs -L NixOS /dev/mapper/encrypted
+
+# Create subvolumes
+sudo mount -t btrfs /dev/mapper/encrypted /mnt
+sudo btrfs subvolume create /mnt/root
+sudo btrfs subvolume create /mnt/nix
+sudo btrfs subvolume create /mnt/swap
+sudo btrfs subvolume create /mnt/home
+
+# Swap
+sudo chattr +C /mnt/swap
+sudo fallocate --length 22G /mnt/swap/swapfile # Big boi, hibernate & stuff
+sudo chmod 600 /mnt/swap/swapfile
+sudo mkswap /mnt/swap/swapfile
+
+sudo umount /mnt
+
+# Mount root
+sudo mount -o compress=zstd,noatime,subvol=root /dev/mapper/encrypted /mnt
+
+# Make directories the others
+sudo mkdir /mnt/boot
+sudo mkdir /mnt/nix
+sudo mkdir /mnt/swap
+sudo mkdir /mnt/home
+
+# Mount the others
+sudo mount -o compress=zstd,noatime,subvol=nix /dev/mapper/encrypted /mnt/nix
+sudo mount -o noatime,subvol=swap /dev/mapper/encrypted /mnt/swap
+sudo mount -o compress=zstd,noatime,subvol=home /dev/mapper/encrypted /mnt/home
+sudo mount /dev/nvme0n1p1 /mnt/boot
+
+# Swapon
+sudo swapon /mnt/swap/swapfile
+
+# Generate config
+sudo nixos-generate-config --root /mnt
+
+echo "Modify the hardware-configuration.nix"
