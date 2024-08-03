@@ -8,6 +8,11 @@ in {
     "Skadi" = {
       initrd.systemd.enable = true;
       kernelPackages = pkgs.linuxPackages_cachyos-lto;
+      kernel.sysctl = {
+        "kernel.nmi_watchdog" = 0;
+        "vm.compaction_proactiveness" = 0;
+        "vm.watermark_boost_factor" = 0;
+      };
     };
 
     "Specter" = {
@@ -15,5 +20,15 @@ in {
       kernelPackages =
         config.boot.zfs.package.latestCompatibleLinuxPackages;
     };
+  }."${hostName}";
+
+  zramSwap = {
+    "Skadi" = {
+      enable = true;
+      algorithm = "zstd";
+      priority = 100;
+    };
+
+    "Specter".enable = false;
   }."${hostName}";
 }
