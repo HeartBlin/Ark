@@ -1,16 +1,19 @@
 { config, inputs, lib, pkgs, ... }:
 
-let
-  inherit (lib) mkForce;
-
-  hostName = config.Ark.hostName;
+let hostName = config.Ark.hostName;
 in {
   imports = [ inputs.chaotic.nixosModules.default ];
 
-  boot.kernelPackages = {
-    "Specter" = config.boot.zfs.package.latestCompatibleLinuxPackages;
-    "Skadi" = pkgs.linuxPackages_cachyos-lto;
-  }."${hostName}";
+  boot = {
+    "Skadi" = {
+      initrd.systemd.enable = true;
+      kernelPackages = pkgs.linuxPackages_cachyos-lto;
+    };
 
-  boot.initrd.systemd.enable = mkForce true;
+    "Specter" = {
+      initrd.systemd.enable = false;
+      kernelPackages =
+        config.boot.zfs.package.latestCompatibleLinuxPackages;
+    };
+  }."${hostName}";
 }
