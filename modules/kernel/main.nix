@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 let hostName = config.Ark.hostName;
 in {
@@ -17,8 +17,7 @@ in {
 
     "Specter" = {
       initrd.systemd.enable = false;
-      kernelPackages =
-        config.boot.zfs.package.latestCompatibleLinuxPackages;
+      kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     };
   }."${hostName}";
 
