@@ -5,20 +5,14 @@ let
 in
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "Neptune-Firefox";
-  version = "1.1";
+  version = "95eff1707656a1ee78cc3365869996dfa64a4bf2";
 
   src = pkgs.fetchFromGitHub {
     repo = pname;
-    owner = "yiiyahui";
-    rev = "v${version}";
-    sha256 = "sha256-Xeof7sSIt0wih9ygh+z2xo6p2Wjh3U6me7HPEUbXu+M=";
+    owner = "HeartBlin"; # Forked it to fix padding issues
+    rev = "${version}";
+    sha256 = "sha256-BCoEJG5DNfNYNXgZ5RHe9/+26Sfc+fTMgFvT6AVwP2M=";
   };
-
-  dontConfigure = true;
-  dontBuild = true;
-  doCheck = false;
-
-  phases = [ "installPhase" ];
 
   installPhase = ''
     mkdir -p $out/share/neptune-firefox
