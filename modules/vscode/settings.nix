@@ -31,6 +31,10 @@
     "files.trimTrailingWhitespace" = true;
     "files.exclude" = { "tsconfig.json" = true; };
 
+    # Javascript/Typescript
+    "[javascript]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
+    "[typescript]" = { "editor.defaultFormatter" = "esbenp.prettier-vscode"; };
+
     # Nix
     "nix.enableLanguageServer" = true;
     "nix.serverPath" = "nixd";

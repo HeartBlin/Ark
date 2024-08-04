@@ -138,7 +138,10 @@ in {
           ] ++ (if (terminal == "foot") then
             [ "Super, Return, exec, foot" ]
           else
-            [ ]) ++ (if chromium then [ "Super, W, exec, chromium" ] else [ "Super, W, exec, firefox" ])
+            [ ]) ++ (if chromium then
+              [ "Super, W, exec, chromium" ]
+            else
+              [ "Super, W, exec, firefox" ])
             ++ (if (manufacturer == "asus") then
               [ ",XF86Launch4, exec, asusctl profile -n" ]
             else

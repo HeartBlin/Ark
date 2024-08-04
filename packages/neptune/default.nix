@@ -1,9 +1,7 @@
 { pkgs }:
 
-let
-  inherit (pkgs) lib;
-in
-pkgs.stdenvNoCC.mkDerivation rec {
+let inherit (pkgs) lib;
+in pkgs.stdenvNoCC.mkDerivation rec {
   pname = "Neptune-Firefox";
   version = "95eff1707656a1ee78cc3365869996dfa64a4bf2";
 

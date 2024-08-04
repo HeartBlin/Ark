@@ -23,9 +23,11 @@ in {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "svg.context-properties.content.enabled" = true;
           "browser.newtabpage.activity-stream.newtabWallpapers.enabled" = true;
-          "browser.newtabpage.activity-stream.newtabWallpapers.v2.enabled" = true;
+          "browser.newtabpage.activity-stream.newtabWallpapers.v2.enabled" =
+            true;
           "widget.non-native-theme.scrollbar.style" = 2;
-          "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar" = false;
+          "browser.newtabpage.activity-stream.improvesearch.handoffToAwesomebar" =
+            false;
         };
 
         userChrome = ''

@@ -15,6 +15,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # AGS - JS GTK Shell
+    ags.url = "github:Aylur/ags";
+
     # Firefox addons
     firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
 
