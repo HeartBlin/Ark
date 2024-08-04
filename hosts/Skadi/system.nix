@@ -21,12 +21,13 @@
     };
 
     role = "laptop";
-    secureBoot.enable = true;
+    secureBoot.enable = false;
     timeZone = "Europe/Bucharest";
     manufacturer = "asus";
 
     home = {
-      chromium.enable = true;
+      chromium.enable = false;
+      firefox.enable = true;
       git = {
         user = "HeartBlin";
         email = "Manea.Emil@proton.me"; # Doxxed lel

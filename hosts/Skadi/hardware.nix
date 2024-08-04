@@ -12,7 +12,7 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c0a2ba8a-0730-4bfd-ad8f-86554ca0bc5c";
     fsType = "btrfs";
-    options = [ "subvol=root" "compress=zstd" "noatime" ];
+    options = [ "subvol=root" ];
   };
 
   boot.initrd.luks.devices."encrypted".device =
@@ -21,7 +21,7 @@
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/c0a2ba8a-0730-4bfd-ad8f-86554ca0bc5c";
     fsType = "btrfs";
-    options = [ "subvol=nix" "compress=zstd" "noatime" ];
+    options = [ "subvol=nix" ];
   };
 
   fileSystems."/swap" = {
@@ -33,7 +33,7 @@
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/c0a2ba8a-0730-4bfd-ad8f-86554ca0bc5c";
     fsType = "btrfs";
-    options = [ "subvol=home" "compress=zstd" "noatime" ];
+    options = [ "subvol=home" ];
   };
 
   fileSystems."/boot" = {
@@ -42,10 +42,9 @@
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
-  swapDevices =
-    [{ device = "/swap/swapfile"; }];
-  networking.useDHCP = lib.mkDefault true;
+  swapDevices = [{ device = "/swap/swapfile"; }];
 
+  networking.useDHCP = lib.mkDefault true;
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;

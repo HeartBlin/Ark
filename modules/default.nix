@@ -102,6 +102,7 @@ in {
   # User specific config
   options.Ark.home = {
     chromium.enable = mkEnableOption "Enable ungoogled-chromium";
+    firefox.enable = mkEnableOption "Enable firefox";
     git = {
       user = mkOption {
         type = str;

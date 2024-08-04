@@ -7,7 +7,7 @@ in {
   boot = {
     "Skadi" = {
       initrd.systemd.enable = true;
-      kernelPackages = pkgs.linuxPackages_cachyos-lto;
+      kernelPackages = pkgs.linuxPackages_zen;
       kernel.sysctl = {
         "kernel.nmi_watchdog" = 0;
         "vm.compaction_proactiveness" = 0;
