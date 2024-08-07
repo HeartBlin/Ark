@@ -46,7 +46,7 @@
         wallpapers = let
           wallpaper = "${
               self.packages.${pkgs.system}.Walls
-            }/share/wallpapers/tokyo-night.png";
+            }/share/wallpapers/Spiral_6A.jpg";
         in {
           isTwo = true;
           firstWallpaper = wallpaper;
