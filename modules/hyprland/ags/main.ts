@@ -23,8 +23,8 @@ function allMonitorsAsync(x: (y: number) => Promise<Window<any, any>>) {
 }
 
 const Corners = () => [
-  allMonitors(RounedBottomLeft),
-  allMonitors(RounedBottomRight),
+  //allMonitors(RounedBottomLeft),
+  //allMonitors(RounedBottomRight),
 ];
 
 App.config({

@@ -32,6 +32,9 @@
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
     lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Automatic color generation
+    matugen.url = "github:/InioX/Matugen";
+
     # Artwork
     nixos-artwork.url = "github:NixOS/nixos-artwork";
     nixos-artwork.flake = false;

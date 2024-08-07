@@ -1,0 +1,20 @@
+common {
+  font-family: 'Material Symbols Outlined';
+  font-size: 17px;
+  margin: 3px 3px 3px 3px;
+  padding: 3px 10px 3px 10px;
+  border-radius: 16px
+}
+
+.inhibitorOff {
+  @extend common;
+  background-color: transparent;
+  color: $onSurfaceVariant;
+}
+
+.inhibitorOn {
+  @extend common;
+  background-color: $primaryContainer;
+  color: $onPrimaryContainer;
+}
+

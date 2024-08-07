@@ -1,10 +1,11 @@
+@import '/home/heartblin/.cache/colors';
 @import 'bar';
 @import 'workspaces';
+@import 'clock';
+@import 'inhibitor';
+@import 'power';
 
 * {
   all: unset;
-}
-.time {
-  padding: 15px 10px;
 }
 

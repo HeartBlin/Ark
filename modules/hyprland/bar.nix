@@ -13,11 +13,18 @@ in {
       configDir = ./ags;
     };
 
-    home.packages = [ pkgs.bun pkgs.hyprpicker pkgs.sassc ];
+    fonts.fontconfig.enable = true;
+    home.packages = [
+      pkgs.bun
+      pkgs.google-fonts
+      pkgs.hyprpicker
+      pkgs.material-symbols
+      pkgs.sassc
+    ];
 
     wayland.windowManager.hyprland.settings = {
       exec-once = [ "ags" ];
-      blurls = [ "agsbar-0" "agsbar-1" ];
+      #blurls = [ "agsbar-0" "agsbar-1" ];
     };
   };
 }

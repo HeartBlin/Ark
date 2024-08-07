@@ -1,43 +1,50 @@
 import { Workspaces } from "./workspaces";
-
-function Time() {
-  const time = Variable("", {
-    poll: [
-      1000,
-      function () {
-        return Date().toString();
-      },
-    ],
-  });
-
-  return Widget.Label({
-    hpack: "center",
-    className: "time",
-    label: time.bind(),
-  });
-}
+import { RoundedCorner } from "./roundedCorner";
+import { Clock } from "./clock";
+import { Inhibitor } from "./inhibitor";
+import { PowerProfiles } from "./powerProfiles";
 
 function Left() {
   return Widget.Box({
     className: "bar-left",
     hpack: "start",
-    children: [Workspaces],
+    children: [],
   });
 }
 
-function Center() {
+function Center(monitor: number) {
   return Widget.Box({
     className: "bar-center",
     hpack: "center",
-    children: [Time()],
+    children: [
+      RoundedCorner("bottom_right", { className: "corner" }),
+      Workspaces(monitor),
+      RoundedCorner("bottom_left", { className: "corner" }),
+    ],
+  });
+}
+
+function ToolBar() {
+  return Widget.Box({
+    className: "toolbar",
+    children: [
+      PowerProfiles(),
+      Inhibitor(),
+    ],
   });
 }
 
 function Right() {
   return Widget.Box({
-    className: "bar-right",
+    className: "barRightContainer",
     hpack: "end",
-    children: [Time()],
+    children: [
+      RoundedCorner("bottom_right", { className: "barRightCorner" }),
+      Widget.Box({
+        className: "barRight",
+        children: [ ToolBar(), Clock()],
+      }),
+    ],
   });
 }
 
@@ -50,7 +57,7 @@ export const Bar = async (monitor = 0) => {
     exclusivity: "exclusive",
     child: Widget.CenterBox({
       start_widget: Left(),
-      center_widget: Center(),
+      center_widget: Center(monitor),
       end_widget: Right(),
     }),
   });

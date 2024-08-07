@@ -1,0 +1,41 @@
+commonLabel {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 15px;
+}
+
+commonButton {
+  margin: 3px;
+  padding: 3px 10px 3px 10px;
+  border-radius: 16px;
+}
+
+.powerQuietLabel {
+  @extend commonLabel;
+  color: $onSurfaceVariant;
+}
+
+.powerBalancedLabel {
+  @extend commonLabel;
+  color: $onSurfaceVariant;
+}
+
+.powerPerformanceLabel {
+  @extend commonLabel;
+  color: $onPrimaryContainer;
+}
+
+.powerQuietButton {
+  @extend commonButton;
+  background-color: transparent;
+}
+
+.powerBalancedButton {
+  @extend commonButton;
+  background-color: $surfaceContainerHigh;
+}
+
+.powerPerformanceButton {
+  @extend commonButton;
+  background-color: $primaryContainer;
+}

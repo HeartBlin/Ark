@@ -1,8 +1,24 @@
 .corner {
-  background-color: rgba(0, 0, 0, 1);
-  border-radius: 40px;
+  background-color: $surface;
+  border-radius: 20px;
 }
 
 window.bar {
-  background-color: rgba(0, 0, 0, 1);
+  background-color: transparent;
+}
+
+.barRight {
+  border-top-left-radius: 20px;
+  background: $surface;
+}
+
+.barRightCorner {
+  background-color: $surface;
+  border-radius: 20px;
+}
+
+.toolbar {
+  margin: 3px;
+  border-radius: 17px;
+  background-color: $surfaceContainer;
 }

@@ -2,7 +2,7 @@ import Widget from "resource:///com/github/Aylur/ags/widget.js";
 const Lang = imports.lang;
 import Gtk from "gi://Gtk?version=3.0";
 
-export const RoundedCorner = (place, props) =>
+export const RoundedCorner = (place: any, props: any) =>
   Widget.DrawingArea({
     ...props,
     hpack: place.includes("left") ? "start" : "end",

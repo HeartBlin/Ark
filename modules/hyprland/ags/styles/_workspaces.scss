@@ -1,11 +1,63 @@
-.active {
-  background-color: aqua;
+commonSize {
+  font-size: 24px;
+  font-weight: 900;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
-.occupied {
-  background-color: red;
+button {
+  transition: all 0.3s ease;
 }
 
-.empty {
-  background-color: greenyellow;
+.workspaceContainer {
+  background-color: $surface;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.workspaceBox {
+  border-radius: 17px;
+  margin: 3px;
+  padding: 3px 1px 3px 1px;
+  background-color: $surfaceContainer;
+}
+
+.activeLabel {
+  @extend commonSize;
+  color: $onPrimaryContainer;
+}
+
+.occupiedLabel {
+  @extend commonSize;
+}
+
+.emptyLabel {
+  @extend commonSize;
+}
+
+.workspaceButtons {
+  border-radius: 13px;
+  margin: 0px 2px;
+}
+
+.activeButton {
+  background-color: $primaryContainer;
+}
+
+.occupiedButton {
+  color: $onSecondaryContainer;
+  background-color: transparent;
+}
+
+.emptyButton {
+  color: $onSurfaceVariant;
+  background-color: transparent;
+}
+
+.occupiedButton:hover {
+  background-color: mix($onSurface, $surface, 10%);
+}
+
+.emptyButton:hover {
+  background-color: mix($onSurface, $surface, 10%);
 }
