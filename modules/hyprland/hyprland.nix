@@ -52,6 +52,23 @@ in {
             allow_dumb_copy = true;
           };
 
+          render = {
+            explicit_sync = true;
+          };
+
+          workspace = [
+            "1, monitor:eDP-1, default:true"
+            "2, monitor:eDP-1"
+            "3, monitor:eDP-1"
+            "4, monitor:eDP-1"
+            "5, monitor:eDP-1"
+            "6, monitor:HDMI-A-1, default:true"
+            "7, monitor:HDMI-A-1"
+            "8, monitor:HDMI-A-1"
+            "9, monitor:HDMI-A-1"
+            "10, monitor:HDMI-A-1"
+          ];
+
           exec-once = [
             # Clipboard
             "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${
@@ -119,22 +136,22 @@ in {
             "Super, 3, workspace, 3"
             "Super, 4, workspace, 4"
             "Super, 5, workspace, 5"
-            "Super, 6, workspace, 6"
-            "Super, 7, workspace, 7"
-            "Super, 8, workspace, 8"
-            "Super, 9, workspace, 9"
-            "Super, 0, workspace, 10"
+            "Super, F1, workspace, 6"
+            "Super, F2, workspace, 7"
+            "Super, F3, workspace, 8"
+            "Super, F4, workspace, 9"
+            "Super, F5, workspace, 10"
 
             "Super Shift, 1, movetoworkspace, 1"
             "Super Shift, 2, movetoworkspace, 2"
             "Super Shift, 3, movetoworkspace, 3"
             "Super Shift, 4, movetoworkspace, 4"
             "Super Shift, 5, movetoworkspace, 5"
-            "Super Shift, 6, movetoworkspace, 6"
-            "Super Shift, 7, movetoworkspace, 7"
-            "Super Shift, 8, movetoworkspace, 8"
-            "Super Shift, 9, movetoworkspace, 9"
-            "Super Shift, 0, movetoworkspace, 10"
+            "Super Shift, F1, movetoworkspace, 6"
+            "Super Shift, F2, movetoworkspace, 7"
+            "Super Shift, F3, movetoworkspace, 8"
+            "Super Shift, F4, movetoworkspace, 9"
+            "Super Shift, F5, movetoworkspace, 10"
           ] ++ (if (terminal == "foot") then
             [ "Super, Return, exec, foot" ]
           else
