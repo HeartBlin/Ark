@@ -12,7 +12,7 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/c0a2ba8a-0730-4bfd-ad8f-86554ca0bc5c";
     fsType = "btrfs";
-    options = [ "subvol=root" ];
+    options = [ "subvol=root" "noatime" "compress=zstd"];
   };
 
   boot.initrd.luks.devices."encrypted".device =
@@ -21,19 +21,21 @@
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/c0a2ba8a-0730-4bfd-ad8f-86554ca0bc5c";
     fsType = "btrfs";
-    options = [ "subvol=nix" ];
+    options = [ "subvol=nix" "noatime" "compress=zstd"];
   };
 
+  boot.resumeDevice = "/dev/disk/by-uuid/c0a2ba8a-0730-4bfd-ad8f-86554ca0bc5c";
+  boot.kernelParams = [ "resume_offset=533760"];
   fileSystems."/swap" = {
     device = "/dev/disk/by-uuid/c0a2ba8a-0730-4bfd-ad8f-86554ca0bc5c";
     fsType = "btrfs";
-    options = [ "subvol=swap" ];
+    options = [ "subvol=swap" "noatime" ];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/c0a2ba8a-0730-4bfd-ad8f-86554ca0bc5c";
     fsType = "btrfs";
-    options = [ "subvol=home" ];
+    options = [ "subvol=home" "noatime" "compress=zstd"];
   };
 
   fileSystems."/boot" = {
