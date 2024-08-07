@@ -1,0 +1,39 @@
+.trayBox {
+  padding: 0px 5px;
+  margin: 3px;
+  border-radius: 17px;
+  background-color: $surfaceContainer;
+}
+
+.trayIcon {
+  font-size: 17px;
+}
+
+.trayButton {
+  margin: 0px 5px;
+}
+
+menu {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 15px;
+  background-color: $surfaceContainer;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+menuitem {
+  color: $onSurface;
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin: 5px;
+}
+
+menuitem:hover {
+  color: $onSurfaceVariant;
+  background-color: $surfaceContainerHigh;
+}
+
+menuitem:disabled {
+  color: mix($onSurface, transparent, 25%);
+}

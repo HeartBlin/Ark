@@ -83,6 +83,9 @@ in {
 
             # Keyring
             "gnome-keyring-daemon --start --components=secrets"
+
+            "ags"
+            "sleep 1 && rog-control-center"
           ];
 
           misc = {

@@ -16,15 +16,11 @@ in {
     fonts.fontconfig.enable = true;
     home.packages = [
       pkgs.bun
+      pkgs.busybox
       pkgs.google-fonts
       pkgs.hyprpicker
       pkgs.material-symbols
       pkgs.sassc
     ];
-
-    wayland.windowManager.hyprland.settings = {
-      exec-once = [ "ags" ];
-      #blurls = [ "agsbar-0" "agsbar-1" ];
-    };
   };
 }

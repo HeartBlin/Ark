@@ -3,18 +3,29 @@ import { RoundedCorner } from "./roundedCorner";
 import { Clock } from "./clock";
 import { Inhibitor } from "./inhibitor";
 import { PowerProfiles } from "./powerProfiles";
+import { Tray } from "./tray";
+
+function LeftContainer() {
+  return Widget.Box({
+    className: "leftContainer",
+    children: [Tray()],
+  });
+}
 
 function Left() {
   return Widget.Box({
-    className: "bar-left",
+    className: "barLeft",
     hpack: "start",
-    children: [],
+    children: [
+      LeftContainer(),
+      RoundedCorner("bottom_left", { className: "corner" }),
+    ],
   });
 }
 
 function Center(monitor: number) {
   return Widget.Box({
-    className: "bar-center",
+    className: "barCenter",
     hpack: "center",
     children: [
       RoundedCorner("bottom_right", { className: "corner" }),
@@ -27,10 +38,7 @@ function Center(monitor: number) {
 function ToolBar() {
   return Widget.Box({
     className: "toolbar",
-    children: [
-      PowerProfiles(),
-      Inhibitor(),
-    ],
+    children: [PowerProfiles(), Inhibitor()],
   });
 }
 
@@ -42,7 +50,7 @@ function Right() {
       RoundedCorner("bottom_right", { className: "barRightCorner" }),
       Widget.Box({
         className: "barRight",
-        children: [ ToolBar(), Clock()],
+        children: [ToolBar(), Clock()],
       }),
     ],
   });

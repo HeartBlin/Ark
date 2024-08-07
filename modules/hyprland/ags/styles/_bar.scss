@@ -12,6 +12,15 @@ window.bar {
   background: $surface;
 }
 
+.barLeft {
+  background: transparent;
+}
+
+.leftContainer {
+  background: $surface;
+  border-top-right-radius: 20px;
+}
+
 .barRightCorner {
   background-color: $surface;
   border-radius: 20px;
