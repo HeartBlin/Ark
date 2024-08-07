@@ -3,6 +3,7 @@
 let cfg = config.Ark.manufacturer;
 in {
   config = lib.mkIf (cfg == "asus") {
+    services.power-profiles-daemon.enable = true;
     services.asusd = {
       enable = true;
       enableUserService = true;
