@@ -5,14 +5,14 @@ let
 
   cfg = config.Ark.hardware.gpu;
 
-  #bleedingEdge = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-  #  version = "560.28.03";
-  #  sha256_64bit = "sha256-martv18vngYBJw1IFUCAaYr+uc65KtlHAMdLMdtQJ+Y=";
-  #  sha256_aarch64 = lib.fakeSha256;
-  #  openSha256 = "sha256-asGpqOpU0tIO9QqceA8XRn5L27OiBFuI9RZ1NjSVwaM=";
-  #  settingsSha256 = lib.fakeSha256;
-  #  persistencedSha256 = "sha256-MhITuC8tH/IPhCOUm60SrPOldOpitk78mH0rg+egkTE=";
-  #};
+  bleedingEdge = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    version = "560.31.02";
+    sha256_64bit = "sha256-0cwgejoFsefl2M6jdWZC+CKc58CqOXDjSi4saVPNKY0=";
+    sha256_aarch64 = lib.fakeSha256;
+    openSha256 = "sha256-X5UzbIkILvo0QZlsTl9PisosgPj/XRmuuMH+cDohdZQ=";
+    settingsSha256 = lib.fakeSha256;
+    persistencedSha256 = "sha256-BDtdpH5f9/PutG3Pv9G4ekqHafPm3xgDYdTcQumyMtg=";
+  };
 in {
   config = mkIf (cfg.type == "nvidia") {
     nixpkgs.config = {
@@ -49,7 +49,7 @@ in {
 
     hardware.nvidia = {
       # Always use latest
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = bleedingEdge;
 
       dynamicBoost.enable = mkDefault true;
       modesetting.enable = mkDefault true;
