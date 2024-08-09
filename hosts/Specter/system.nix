@@ -3,6 +3,7 @@
 {
   config.Ark = {
     audio.enable = false;
+    bluetooth.enable = false;
     displayManagers.gdm.enable = true;
     flakeDir = ""; # Not in the ISO
     hardware = {

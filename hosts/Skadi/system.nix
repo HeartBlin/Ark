@@ -3,6 +3,7 @@
 {
   config.Ark = {
     audio.enable = true;
+    bluetooth.enable = true;
     displayManagers = {
       gdm.enable = true;
       sddm.enable = false;
@@ -46,7 +47,7 @@
         wallpapers = let
           wallpaper = "${
               self.packages.${pkgs.system}.Walls
-            }/share/wallpapers/Spiral_6A.jpg";
+            }/share/wallpapers/Spiral_3A.jpg";
         in {
           isTwo = true;
           firstWallpaper = wallpaper;

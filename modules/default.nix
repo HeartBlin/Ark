@@ -35,6 +35,7 @@ in {
   # Hell starts here :*
   options.Ark = {
     audio.enable = mkEnableOption "Enable audio (pipewire)";
+    bluetooth.enable = mkEnableOption "Enable bluetooth";
     displayManagers = {
       gdm.enable = mkEnableOption "Enable GDM";
       sddm.enable = mkEnableOption "Enable SDDM";

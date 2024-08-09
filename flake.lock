@@ -55,6 +55,7 @@
     "chaotic": {
       "inputs": {
         "compare-to": "compare-to",
+        "fenix": "fenix",
         "flake-schemas": "flake-schemas",
         "home-manager": "home-manager",
         "jovian": "jovian",
@@ -63,11 +64,11 @@
         "yafas": "yafas"
       },
       "locked": {
-        "lastModified": 1722963859,
-        "narHash": "sha256-TQ5sQ+PX0OeMZx+nYBA0CL3R9Yv6MupLzFU0iQrGGrc=",
+        "lastModified": 1723207651,
+        "narHash": "sha256-aE6vRFo4GQubaPwLEPXtyYKACfxY+JEykbKZXna7dek=",
         "owner": "chaotic-cx",
         "repo": "nyx",
-        "rev": "f41d02a7ca6433c98fac378569617f2652628624",
+        "rev": "7483b4d9ade629d2f6b4f9d6ff87a9a1cbcabd26",
         "type": "github"
       },
       "original": {
@@ -112,6 +113,28 @@
         "type": "github"
       }
     },
+    "fenix": {
+      "inputs": {
+        "nixpkgs": [
+          "chaotic",
+          "nixpkgs"
+        ],
+        "rust-analyzer-src": "rust-analyzer-src"
+      },
+      "locked": {
+        "lastModified": 1723098624,
+        "narHash": "sha256-TFg+lq7pHgCnsB4nRmMeTxSnZXHvzYJ2IHyEiw8zEF8=",
+        "owner": "nix-community",
+        "repo": "fenix",
+        "rev": "d6022ac563f2f48d8eeff89ca3589c8adc5235f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "fenix",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -119,11 +142,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1723016048,
-        "narHash": "sha256-boo9SgJkWwqC1hfDn1fLiZLBR4wB2uFcJURbj/KGKtE=",
+        "lastModified": 1723176196,
+        "narHash": "sha256-8FWJ0kJN6yin5Z9BhtPlVaRzj9ljuUdaBT2i/bquJO4=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "6af4b8e298a5c6a32468b433ff9931b83a999ce3",
+        "rev": "ce877fc7a74fb1abfedcdb4f78e67d930a0841c8",
         "type": "gitlab"
       },
       "original": {
@@ -247,11 +270,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722630065,
-        "narHash": "sha256-QfM/9BMRkCmgWzrPDK+KbgJOUlSJnfX4OvsUupEUZvA=",
+        "lastModified": 1723015306,
+        "narHash": "sha256-jQnFEtH20/OsDPpx71ntZzGdRlpXhUENSQCGTjn//NA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "afc892db74d65042031a093adb6010c4c3378422",
+        "rev": "b3d5ea65d88d67d4ec578ed11d4d2d51e3de525e",
         "type": "github"
       },
       "original": {
@@ -344,11 +367,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1723016660,
-        "narHash": "sha256-i+zQZekrzCHIuMKYXH/Sw4Dccr/8EKLz4yqphzvmCa8=",
+        "lastModified": 1723215081,
+        "narHash": "sha256-HVaAneYjMwsXXpbxDVmk+G2h1uQvAhog3QxZGuVDbX8=",
         "ref": "refs/heads/main",
-        "rev": "fa6ee513678e6e1cfdc575a421c1e0ddf4608994",
-        "revCount": 5056,
+        "rev": "fd1d4e288edd586a3d5273cda053a51f5b14cad7",
+        "revCount": 5072,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -605,11 +628,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722666143,
-        "narHash": "sha256-uTr3LiytFHFUYmIrhs5NoGlm5DCJxQlfyaZEKCU/DS8=",
+        "lastModified": 1723016361,
+        "narHash": "sha256-iEVCAOn7WUdJGrK2EW5hkfl4gBmYl5gVck+MSn6ba44=",
         "owner": "Jovian-Experiments",
         "repo": "Jovian-NixOS",
-        "rev": "bcfe9dc708c92590fec676692b3ed79443eda819",
+        "rev": "fc3d12deef508a73c7beef4cd9bebe03acde4ed7",
         "type": "github"
       },
       "original": {
@@ -856,6 +879,23 @@
         "nixos-artwork": "nixos-artwork",
         "nixpkgs": "nixpkgs_6",
         "systems": "systems_8"
+      }
+    },
+    "rust-analyzer-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723042912,
+        "narHash": "sha256-Ff4nCgmlSWVOMvRVVf6gTYgmZjGw9EjIFHG0aUFg+D8=",
+        "owner": "rust-lang",
+        "repo": "rust-analyzer",
+        "rev": "935883fd826c46e7e7e6de19cf24377c21f1b2ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rust-lang",
+        "ref": "nightly",
+        "repo": "rust-analyzer",
+        "type": "github"
       }
     },
     "rust-overlay": {
