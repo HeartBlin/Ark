@@ -55,8 +55,8 @@
 
     # Workbench
     "workbench.iconTheme" = "material-icon-theme";
-    "workbench.preferredDarkColorTheme" = "Everblush";
-    "workbench.preferredLightColorTheme" = "Everblush";
+    "workbench.preferredDarkColorTheme" = "Default Dark+";
+    "workbench.preferredLightColorTheme" = "Default Dark+";
     "workbench.sideBar.location" = "left";
   };
 

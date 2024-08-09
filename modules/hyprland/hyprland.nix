@@ -9,6 +9,7 @@ let
   chromium = config.Ark.home.chromium.enable;
   manufacturer = config.Ark.manufacturer;
   nvidia = (config.Ark.hardware.gpu.type == "nvidia");
+  bluetooth = config.Ark.bluetooth.enable;
 in {
   imports = [ inputs.hyprland.nixosModules.default ];
 
@@ -85,7 +86,7 @@ in {
             "gnome-keyring-daemon --start --components=secrets"
 
             "ags"
-            "sleep 1 && rog-control-center"
+            (mkIf bluetooth "blueman-tray")
           ];
 
           misc = {
